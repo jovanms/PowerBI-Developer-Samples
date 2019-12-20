@@ -36,13 +36,15 @@ namespace PBIWebApp
                 accessToken.Value = authResult.AccessToken;
 
                 //Get first dashboard. Sample assumes one dashboard with one tile
-                string dashboardId = GetDashboard(0);
-                
+
+                //string dashboardId = GetDashboard(0);
+
                 //You can get the Dashboard ID with the Get Dashboards operation. Or go to your dashboard, and get it from the url for the dashboard.
                 //The dashboard id is at the end if the url. For example, https://msit.powerbi.com/groups/me/dashboards/00b7e871-cb98-48ed-bddc-0000c000e000              
                 //In this sample, you get the first tile in the first dashbaord. In a production app, you would create a more robost
                 //solution
-                GetTile(dashboardId, 0);
+
+                //GetTile(dashboardId, 0);
             }
         }
 
@@ -58,80 +60,80 @@ namespace PBIWebApp
         }
 
         //Get a dashbaord id. 
-        protected string GetDashboard(int index)
-        {
-            string dashboardId = string.Empty;
+        //protected string GetDashboard(int index)
+        //{
+        //    string dashboardId = string.Empty;
 
-            //Configure tiles request
-            System.Net.WebRequest request = System.Net.WebRequest.Create($"{baseUri}groups/{Settings.Default.WorkspaceId}/Dashboards") as System.Net.HttpWebRequest;
+        //    //Configure tiles request
+        //    System.Net.WebRequest request = System.Net.WebRequest.Create($"{baseUri}groups/{Settings.Default.WorkspaceId}/Dashboards") as System.Net.HttpWebRequest;
 
-            request.Method = "GET";
-            request.ContentLength = 0;
-            request.Headers.Add("Authorization", $"Bearer {accessToken.Value}");
+        //    request.Method = "GET";
+        //    request.ContentLength = 0;
+        //    request.Headers.Add("Authorization", $"Bearer {accessToken.Value}");
 
-            //Get dashboards response from request.GetResponse()
-            using (var response = request.GetResponse() as System.Net.HttpWebResponse)
-            {
-                //Get reader from response stream
-                using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
-                {
-                    //Deserialize JSON string
-                    PBIDashboards dashboards = JsonConvert.DeserializeObject<PBIDashboards>(reader.ReadToEnd());
+        //    //Get dashboards response from request.GetResponse()
+        //    using (var response = request.GetResponse() as System.Net.HttpWebResponse)
+        //    {
+        //        //Get reader from response stream
+        //        using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+        //        {
+        //            //Deserialize JSON string
+        //            PBIDashboards dashboards = JsonConvert.DeserializeObject<PBIDashboards>(reader.ReadToEnd());
 
-                    //Sample assumes at least one Dashboard with one Tile.
-                    //You could write an app that lists all tiles in a dashboard
-                    dashboardId = dashboards.value[index].id;
-                }
-            }
+        //            //Sample assumes at least one Dashboard with one Tile.
+        //            //You could write an app that lists all tiles in a dashboard
+        //            dashboardId = dashboards.value[index].id;
+        //        }
+        //    }
 
-            return dashboardId;
-        }
+        //    return dashboardId;
+        //}
 
         //Get a tile from a dashboard. In this sample, you get the first tile.
-        protected void GetTile(string dashboardId, int index)
-        {
-            //Configure tiles request
-            System.Net.WebRequest request = System.Net.WebRequest.Create($"{baseUri}groups/{Settings.Default.WorkspaceId}/Dashboards/{dashboardId}/Tiles") as System.Net.HttpWebRequest;
+        //protected void GetTile(string dashboardId, int index)
+        //{
+        //    //Configure tiles request
+        //    System.Net.WebRequest request = System.Net.WebRequest.Create($"{baseUri}groups/{Settings.Default.WorkspaceId}/Dashboards/{dashboardId}/Tiles") as System.Net.HttpWebRequest;
 
-            request.Method = "GET";
-            request.ContentLength = 0;
-            request.Headers.Add("Authorization", $"Bearer {accessToken.Value}");
+        //    request.Method = "GET";
+        //    request.ContentLength = 0;
+        //    request.Headers.Add("Authorization", $"Bearer {accessToken.Value}");
 
-            //Get tiles response from request.GetResponse()
-            using (var response = request.GetResponse() as System.Net.HttpWebResponse)
-            {
-                //Get reader from response stream
-                using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
-                {
-                    //Deserialize JSON string
-                    PBITiles tiles = JsonConvert.DeserializeObject<PBITiles>(reader.ReadToEnd());
+        //    //Get tiles response from request.GetResponse()
+        //    using (var response = request.GetResponse() as System.Net.HttpWebResponse)
+        //    {
+        //        //Get reader from response stream
+        //        using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+        //        {
+        //            //Deserialize JSON string
+        //            PBITiles tiles = JsonConvert.DeserializeObject<PBITiles>(reader.ReadToEnd());
 
-                    //Sample assumes at least one Dashboard with one Tile.
-                    //You could write an app that lists all tiles in a dashboard
-                    if (tiles.value.Length > 0)
-                        tileEmbedUrl.Text = tiles.value[index].embedUrl;
-                }
-            }
-        }
+        //            //Sample assumes at least one Dashboard with one Tile.
+        //            //You could write an app that lists all tiles in a dashboard
+        //            if (tiles.value.Length > 0)
+        //                tileEmbedUrl.Text = tiles.value[index].embedUrl;
+        //        }
+        //    }
+        //}
 
-        public string GetAccessToken(string authorizationCode, string clientID, string clientSecret, string redirectUri)
-        {
-            //Redirect uri must match the redirect_uri used when requesting Authorization code.
-            //Note: If you use a redirect back to Default, as in this sample, you need to add a forward slash
-            //such as http://localhost:13526/
+        //public string GetAccessToken(string authorizationCode, string clientID, string clientSecret, string redirectUri)
+        //{
+        //    //Redirect uri must match the redirect_uri used when requesting Authorization code.
+        //    //Note: If you use a redirect back to Default, as in this sample, you need to add a forward slash
+        //    //such as http://localhost:13526/
 
-            // Get auth token from auth code       
-            TokenCache TC = new TokenCache();
+        //    // Get auth token from auth code       
+        //    TokenCache TC = new TokenCache();
 
-            //Values are hard-coded for sample purposes
-            string authority = Properties.Settings.Default.AADAuthorityUri;
-            AuthenticationContext AC = new AuthenticationContext(authority, TC);
-            ClientCredential cc = new ClientCredential(clientID, clientSecret);
+        //    //Values are hard-coded for sample purposes
+        //    string authority = Properties.Settings.Default.AADAuthorityUri;
+        //    AuthenticationContext AC = new AuthenticationContext(authority, TC);
+        //    ClientCredential cc = new ClientCredential(clientID, clientSecret);
 
-            //Set token from authentication result
-            return AC.AcquireTokenByAuthorizationCodeAsync(
-                authorizationCode,
-                new Uri(redirectUri), cc).Result.AccessToken;
-        }
+        //    //Set token from authentication result
+        //    return AC.AcquireTokenByAuthorizationCodeAsync(
+        //        authorizationCode,
+        //        new Uri(redirectUri), cc).Result.AccessToken;
+        //}
     }
 }

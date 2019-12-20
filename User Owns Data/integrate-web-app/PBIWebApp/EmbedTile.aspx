@@ -49,11 +49,13 @@
     <asp:Button ID="getTileButton" runat="server" OnClick="getTileButton_Click" Text="Embed Tile" />  
 
     <table>
-        <tr><td>Tile Embed URL</td> <td><asp:Textbox ID="tileEmbedUrl" runat="server" Width="900px"></asp:Textbox></td></tr>
+        <tr><td>Tile Embed URL</td> <td><asp:Textbox ID="tileEmbedUrl" TextMode="MultiLine" Rows="4"
+            Text="https://msit.powerbi.com/embed?dashboardId=738b365e-9b22-4e78-ab3b-8292d1e4f2a4&tileId=0c645254-a04b-4bae-80d5-8a406a92ef3a&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9ERi1NU0lULVNDVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQifQ%3d%3d"
+            runat="server" Width="900px"></asp:Textbox></td></tr>
 
         <tr><td>Dashboard Tile</td><td></td></tr>
         <tr><td></td><td>
-            <iframe ID="iFrameEmbedTile" height="500px" width="900px"></iframe>
-        </td></tr>   
+            <iframe ID="iFrameEmbedTile" height="500" width="900"></iframe>
+        </td></tr>
     </table>
 </asp:Content>
