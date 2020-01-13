@@ -46,15 +46,29 @@
         </h1>
     </header>
 
-    <asp:Button ID="getTileButton" runat="server" OnClick="getTileButton_Click" Text="Embed Tile" />  
-
+    <asp:Textbox ID="tileEmbedUrl" TextMode="MultiLine" Rows="4" ReadOnly="true" style="display:none;"
+            Text="https://msit.powerbi.com/embed?dashboardId=ab12b1b1-bd80-4905-bc9a-a44b9a6a818f&tileId=b1b52457-26c3-4cd2-8d86-ddeffe5f833d&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9ERi1NU0lULVNDVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQifQ%3d%3d&$filter=Canadian_x0020_Towns/Province_x0020_Postal_x0020_Code eq 'AB'"
+            runat="server" Width="900px"></asp:Textbox>
     <table>
-        <tr><td>Tile Embed URL</td> <td><asp:Textbox ID="tileEmbedUrl" TextMode="MultiLine" Rows="4"
-            Text="https://msit.powerbi.com/embed?dashboardId=738b365e-9b22-4e78-ab3b-8292d1e4f2a4&tileId=0c645254-a04b-4bae-80d5-8a406a92ef3a&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9ERi1NU0lULVNDVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQifQ%3d%3d"
-            runat="server" Width="900px"></asp:Textbox></td></tr>
+        <tr><td>Tile Embed URL:</td><td>
+            <pre>Unfiltered:
 
-        <tr><td>Dashboard Tile</td><td></td></tr>
-        <tr><td></td><td>
+https://msit.powerbi.com/embed?dashboardId=ab12b1b1-bd80-4905-bc9a-a44b9a6a818f&tileId=b1b52457-26c3-4cd2-8d86-ddeffe5f833d&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9ERi1NU0lULVNDVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQifQ%3d%3d
+
+Works fine.
+
+
+Filtered to show AB only:
+
+https://msit.powerbi.com/embed?dashboardId=ab12b1b1-bd80-4905-bc9a-a44b9a6a818f&tileId=b1b52457-26c3-4cd2-8d86-ddeffe5f833d&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9ERi1NU0lULVNDVVMtcmVkaXJlY3QuYW5hbHlzaXMud2luZG93cy5uZXQifQ%3d%3d&$filter=Canadian_x0020_Towns/Province_x0020_Postal_x0020_Code eq 'AB'
+
+Does not filter. Shows as unfiltered instead.
+
+            </pre></td></tr>
+
+        <tr><td></td><td><asp:Button ID="getTileButton" runat="server" OnClick="getTileButton_Click" Text="Embed Tile" /></td></tr>
+
+        <tr><td>Dashboard Tile</td><td>
             <iframe ID="iFrameEmbedTile" height="500" width="900"></iframe>
         </td></tr>
     </table>

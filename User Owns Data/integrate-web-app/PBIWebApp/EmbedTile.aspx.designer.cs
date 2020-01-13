@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PBIWebApp {
-    
-    
-    public partial class EmbedTile {
-        
+namespace PBIWebApp
+{
+
+
+    public partial class EmbedTile
+    {
+
         /// <summary>
         /// accessToken control.
         /// </summary>
@@ -20,16 +22,7 @@ namespace PBIWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField accessToken;
-        
-        /// <summary>
-        /// getTileButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button getTileButton;
-        
+
         /// <summary>
         /// tileEmbedUrl control.
         /// </summary>
@@ -38,5 +31,14 @@ namespace PBIWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tileEmbedUrl;
+
+        /// <summary>
+        /// getTileButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button getTileButton;
     }
 }
